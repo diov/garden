@@ -1,0 +1,87 @@
+.article-header {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.article-title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.article-date {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.article {
+  color: #3f3f46;
+  font-size: 1rem;
+  line-height: 1.5;
+  width: 100%;
+  margin-bottom: 4rem;
+
+  & a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  & a:hover {
+    text-decoration: underline;
+  }
+
+  & a:visited {
+    color: var(--color-link-visited);
+  }
+}
+
+.article blockquote {
+  margin: 2em 0;
+  padding: 10px 20px;
+  position: relative;
+  color: rgba(52, 73, 94, .8);
+  background-color: rgba(192, 91, 77, .05);
+  border-left: 3px solid rgba(192, 91, 77, .3);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+
+  & p {
+    display: inline;
+  }
+}
+
+.article pre {
+  padding: 0 0 0.5rem 0;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+  font-size: 13px;
+}
+
+.article code {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+
+.article :global(code .line)::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115, 138, 148, .4)
+}
+
+.article :global([data-lang])::before {
+  font-family: "Source Code Pro", Monaco, "Courier New", monospace;
+  font-weight: bold;
+  content: attr(data-lang);
+  display: block;
+  font-size: 0.8rem;
+  text-align: left;
+  padding-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: rgba(115, 138, 148, .4);
+  background: rgb(243, 239, 226);
+}

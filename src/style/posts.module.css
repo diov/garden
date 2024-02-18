@@ -1,0 +1,29 @@
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+.posts-item {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 8px;
+
+  & a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  & a:hover {
+    text-decoration: underline;
+  }
+
+  & time {
+    font-size: 12px;
+  }
+}
