@@ -9,7 +9,7 @@ const Posts: React.FC = () => {
         return (
           <li key={matter.path} className={style.postsItem}>
             <Link to={matter.path}>{matter.meta.title}</Link>
-            <time>{matter.meta.date.toString()}</time>
+            {matter.meta.date && <time>{matter.meta.date}</time>}
           </li>
         )
       })}

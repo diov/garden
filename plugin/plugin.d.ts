@@ -8,7 +8,7 @@ declare module 'virtual:pkm' {
     path: string
     meta: {
       title: string
-      date: string
+      date?: string
       [key: string]: any
     }
     backlinks: Backlink[]

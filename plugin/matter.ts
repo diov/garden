@@ -16,6 +16,12 @@ class Context {
     await this.walkDir()
   }
 
+  private formatDate(date?: Date) {
+    if (!date)
+      return null
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+  }
+
   private async walkDir() {
     const dir = resolve('articles')
     const srcDir = resolve('src')
@@ -38,7 +44,7 @@ class Context {
         path,
         meta: {
           ...data,
-          date: data.date ? new Date(data.date) : undefined,
+          date: data.date ? new Date(data.date) : null,
         },
       })
     })
@@ -56,8 +62,17 @@ class Context {
   }
 
   get pageRoutes() {
-    const matters: PageMatter[] = this.pages.map(page => ({
+    const matters: PageMatter[] = this.pages.sort((a, b) => {
+      if (a.meta.date && b.meta.date)
+        return b.meta.date.getTime() - a.meta.date.getTime()
+
+      return 0
+    }).map(page => ({
       ...page,
+      meta: {
+        ...page.meta,
+        date: this.formatDate(page.meta.date),
+      },
       backlinks: [],
     }))
 
