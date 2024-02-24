@@ -1,0 +1,74 @@
+{
+  "articles/index.md": {
+    "file": "assets/index-5-Jif2uL.js",
+    "isDynamicEntry": true,
+    "src": "articles/index.md"
+  },
+  "articles/posts/2016-movie-review.md": {
+    "file": "assets/2016-movie-review-uK82uG6i.js",
+    "isDynamicEntry": true,
+    "src": "articles/posts/2016-movie-review.md"
+  },
+  "articles/posts/2017-movie-review.md": {
+    "file": "assets/2017-movie-review-w79P8lM4.js",
+    "isDynamicEntry": true,
+    "src": "articles/posts/2017-movie-review.md"
+  },
+  "articles/posts/2020-movie-review.md": {
+    "file": "assets/2020-movie-review-l_BE-I_J.js",
+    "isDynamicEntry": true,
+    "src": "articles/posts/2020-movie-review.md"
+  },
+  "articles/posts/why-rewrite-blog.md": {
+    "file": "assets/why-rewrite-blog-D2rahODB.js",
+    "isDynamicEntry": true,
+    "src": "articles/posts/why-rewrite-blog.md"
+  },
+  "index.html": {
+    "assets": [
+      "assets/logo-B4NjBPgS.svg",
+      "assets/favicon-F3-HsXSb.ico",
+      "assets/apple-touch-icon-LPg6tuIL.png",
+      "assets/favicon-32x32-kSOXLiT_.png",
+      "assets/favicon-16x16-zDLH_CuR.png",
+      "assets/site-fQHvPdET.webmanifest"
+    ],
+    "css": [
+      "assets/app-B_wrhwgY.css"
+    ],
+    "dynamicImports": [
+      "articles/index.md",
+      "articles/posts/2016-movie-review.md",
+      "articles/posts/2017-movie-review.md",
+      "articles/posts/2020-movie-review.md",
+      "articles/posts/why-rewrite-blog.md"
+    ],
+    "file": "assets/app-3qEd1XtO.js",
+    "isEntry": true,
+    "src": "index.html"
+  },
+  "src/assets/apple-touch-icon.png": {
+    "file": "assets/apple-touch-icon-LPg6tuIL.png",
+    "src": "src/assets/apple-touch-icon.png"
+  },
+  "src/assets/favicon-16x16.png": {
+    "file": "assets/favicon-16x16-zDLH_CuR.png",
+    "src": "src/assets/favicon-16x16.png"
+  },
+  "src/assets/favicon-32x32.png": {
+    "file": "assets/favicon-32x32-kSOXLiT_.png",
+    "src": "src/assets/favicon-32x32.png"
+  },
+  "src/assets/favicon.ico": {
+    "file": "assets/favicon-F3-HsXSb.ico",
+    "src": "src/assets/favicon.ico"
+  },
+  "src/assets/logo.svg": {
+    "file": "assets/logo-B4NjBPgS.svg",
+    "src": "src/assets/logo.svg"
+  },
+  "src/assets/site.webmanifest": {
+    "file": "assets/site-fQHvPdET.webmanifest",
+    "src": "src/assets/site.webmanifest"
+  }
+}
