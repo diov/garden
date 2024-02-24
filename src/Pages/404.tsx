@@ -5,13 +5,16 @@ import articleStyle from '@/style/article.module.css'
 import Footer from '@/Components/Footer'
 
 const NotFound: React.FC = () => {
-  const error: any = useRouteError()
+  const error = useRouteError()
 
   const errorMessage = () => {
+    if (!error)
+      return ''
+
     if (isRouteErrorResponse(error))
       return error.statusText
     else
-      return error.message
+      return (error as any).message
   }
 
   return (
@@ -21,7 +24,7 @@ const NotFound: React.FC = () => {
         <h1>404</h1>
         <p>Oops! Looks like you've stumbled upon a page that doesn't exist.</p>
         <p>
-          <i>{error.toString()}</i>
+          <i>{errorMessage()}</i>
         </p>
       </div>
       <Footer />

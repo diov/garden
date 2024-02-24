@@ -12,6 +12,7 @@ export async function generateRoutes() {
     element: <Posts />,
   } as RouteObject)
 
+  console.log(matters)
   const globs = import.meta.glob('../articles/**/*.md')
   for (const key in globs) {
     const matter = matters.find(matter => matter.file === key)
@@ -33,6 +34,10 @@ export async function generateRoutes() {
       errorElement: <NotFound />,
       children: articles,
     } as RouteObject,
+    {
+      path: '404',
+      element: <NotFound />,
+    },
   ]
 
   return route

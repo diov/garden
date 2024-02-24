@@ -1,16 +1,16 @@
-import { extname, join, relative, resolve } from 'node:path'
+import path, { extname, join, relative, resolve } from 'node:path'
 import { readFileSync } from 'node:fs'
 import fg from 'fast-glob'
 import type { Plugin } from 'vite'
 import matter from 'gray-matter'
-import type { Backlink } from 'virtual:pkm'
+import type { PageMatter } from 'virtual:pkm'
 
 // This regex finds all wikilinks in a string
 const wikilinkRegExp = /\[\[([^|\]]+)(?:\|([^\]]+))?\]\]/g
 
 class Context {
   private pages = []
-  private backlinks = new Map<string, string[]>()
+  private wikilinks: { [key: string]: string[] } = {}
 
   async setup() {
     await this.walkDir()
@@ -52,42 +52,29 @@ class Context {
       ))
       .filter(link => link !== path)
 
-    links.forEach((link) => {
-      const backlinks = this.backlinks.get(link)
-      if (backlinks && !backlinks.includes(path))
-        backlinks.push(path)
-      else
-        this.backlinks.set(link, [path])
-    })
+    this.wikilinks[path] = links
   }
 
   get pageRoutes() {
-    const matters = []
-    this.pages.forEach((page) => {
-      const pagelinks = this.backlinks.get(page.path)
-      if (pagelinks) {
-        const links = []
-        pagelinks.forEach((link) => {
-          const page = this.pages.find(p => p.path === link)
-          if (!page)
-            return
-          links.push({
-            title: page.meta.title,
-            link,
+    const matters: PageMatter[] = this.pages.map(page => ({
+      ...page,
+      backlinks: [],
+    }))
+
+    for (const wikilink in this.wikilinks) {
+      const wikiPage = matters.find(p => p.path === wikilink)
+      const links = this.wikilinks[wikilink]
+      links.forEach((link) => {
+        const page = matters.find(p => p.path.endsWith(link))
+        if (page && !page.backlinks.some(b => b.link === wikilink)) {
+          page.backlinks.push({
+            title: wikiPage.meta.title,
+            link: wikilink,
           })
-        })
-        matters.push({
-          ...page,
-          backlinks: links,
-        })
-      }
-      else {
-        matters.push({
-          ...page,
-          backlinks: [],
-        })
-      }
-    })
+        }
+      })
+    }
+
     return matters
   }
 }
